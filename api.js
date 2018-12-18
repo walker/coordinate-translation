@@ -1,6 +1,7 @@
 let Hapi = require('hapi')
 let mongoose = require('mongoose')
 let proj4 = require('proj4')
+let _ = require('lodash')
 
 async function api () {
   try {
