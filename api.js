@@ -5,7 +5,9 @@ let proj4 = require('proj4')
 async function api () {
   try {
 
-    let server = Hapi.Server();
+    let server = Hapi.Server({
+      port: process.env.PORT || 8080
+    });
 
     await server.register({
       plugin: require('hapi-require-https'),
