@@ -12,25 +12,6 @@ async function api () {
       options: {}
     });
 
-    if ('production' === process.env.NODE_ENV) {
-      server.ext('onRequest', function (request, next) {
-        if (request.headers['x-forwarded-proto'] !== 'https') {
-          request.originalPath = request.path;
-          request.setUrl('/redirect');
-        }
-        next();
-      });
-
-      server.route([{
-        method: 'GET',
-        path: '/redirect',
-        handler: function (request, reply) {
-          var host = request.headers.host;
-          reply().redirect('https://' + host + request.originalPath);
-        }
-      }]);
-    }
-
     server.route({
       method: 'GET',
       path: '/point/nad83moeastfipsft/wgs84/{x}/{y}',
