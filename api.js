@@ -7,7 +7,7 @@ async function api () {
 
     let server = Hapi.Server({
       plugin: require('hapi-require-https')
-    })
+    });
 
     if ('production' === process.env.NODE_ENV) {
       server.ext('onRequest', function (request, next) {
@@ -38,7 +38,7 @@ async function api () {
 
         return proj4('NAD83MOEASTFIPSFT', 'WGS84', payload);
       }
-    })
+    });
 
     server.route({
       method: 'POST',
@@ -51,7 +51,7 @@ async function api () {
 
         return proj4('NAD83MOEASTFIPSFT', 'WGS84', payload);
       }
-    })
+    });
 
     // let config = {
     //   appTitle: 'rest-hapi-demo',
@@ -64,15 +64,15 @@ async function api () {
     //   },
     // }
 
-    await server.start()
+    await server.start();
 
     // RestHapi.logUtil.logActionComplete(RestHapi.logger, 'Server Initialized', server.info)
 
-    return server
+    return server;
   } catch (err) {
-    console.log('Error starting server:', err)
+    console.log('Error starting server:', err);
   }
 
 }
 
-module.exports = api()
+module.exports = api();
