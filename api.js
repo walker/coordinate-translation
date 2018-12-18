@@ -6,8 +6,7 @@ async function api () {
   try {
 
     let server = Hapi.Server({
-      plugin: require('hapi-require-https'),
-      options: {}
+      plugin: require('hapi-require-https')
     })
 
     if ('production' === process.env.NODE_ENV) {
