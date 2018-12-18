@@ -5,9 +5,12 @@ let proj4 = require('proj4')
 async function api () {
   try {
 
-    let server = Hapi.Server({
-      plugin: require('hapi-require-https')
-    });
+    let server = Hapi.Server();
+
+    server.register({
+      plugin: require('hapi-require-https'),
+      options: {}
+    })
 
     if ('production' === process.env.NODE_ENV) {
       server.ext('onRequest', function (request, next) {
