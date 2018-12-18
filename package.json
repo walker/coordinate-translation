@@ -28,6 +28,8 @@
     "epsg": "^0.5.0",
     "hapi": "^17.8.1",
     "hapi-require-https": "^3.0.0",
+    "lodash": "^4.17.11",
+    "minimatch": "^3.0.4",
     "mongoose": "^5.4.0",
     "proj4": "^2.5.0",
     "proj4js-defs": "0.0.1",
