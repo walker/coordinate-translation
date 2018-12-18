@@ -81,11 +81,13 @@ async function api () {
         var payload = JSON.parse(request.payload);
         var translated_collection = [];
         var xy_collection = request.payload.collection;
+        var to = 'wgs84';
+        var from = 'nad83moeastfipsft';
+        var count = 0;
+
         proj4.defs('nad83moeastfipsft', '+proj=tmerc +lat_0=35.83333333333334 +lon_0=-90.5 +k=0.9999333333333333 +x_0=250000 +y_0=0 +ellps=GRS80 +datum=NAD83 +to_meter=0.3048006096012192 +no_defs');
         proj4.defs('wgs84', "+title=WGS 84 (long/lat) +proj=longlat +ellps=WGS84 +datum=WGS84 +units=degrees");
 
-        var to = 'wgs84';
-        var from = 'NAD83MOEASTFIPSFT';
 
         switch(request.payload.from) {
           case 'nad83moeastfipsft':
@@ -102,15 +104,21 @@ async function api () {
             break;
         }
 
-        var offset = 0;
-        _(xy_collection).each(function(point){
-          setTimeout(function(){
-            translated_collection[translated_collection.len] = proj4(from, to, point);
-          }, 5 + offset);
-         offset += 5;
-        });
+        if(_.isArray(payload.collection) && _.isObject(payload.collection)) {
+          _.each(payload.collection, function(v) {
+            translated_collection[count] = proj4(from, to, v);
+            count++;
+          });
+        } else if(_.isObject(payload.collection)) {
+          translated_collection = {};
+          _.each(payload.collection, function(v, k) {
+            translated_collection[k] = proj4(from, to, v);
+          });
+        }
 
-        return translated_collection;
+
+        payload.collection = translated_collection;
+        return payload;
       }
     });
 
