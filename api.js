@@ -23,7 +23,7 @@ async function api () {
         proj4.defs('nad83moeastfipsft', '+proj=tmerc +lat_0=35.83333333333334 +lon_0=-90.5 +k=0.9999333333333333 +x_0=250000 +y_0=0 +ellps=GRS80 +datum=NAD83 +to_meter=0.3048006096012192 +no_defs');
         proj4.defs('wgs84', "+title=WGS 84 (long/lat) +proj=longlat +ellps=WGS84 +datum=WGS84 +units=degrees");
         var to = 'wgs84';
-        var from = 'NAD83MOEASTFIPSFT';
+        var from = 'nad83moeastfipsft';
 
         switch(request.params.from) {
           case 'nad83moeastfipsft':
