@@ -1,6 +1,6 @@
 # Coordinate Translate
 
-## GET Result
+## GET Single Point for Process
 
 ```
 /point/{from}/{to}/{srx}/{sry}
@@ -8,6 +8,8 @@
 
 The first arg is from and second is to coordinate types.
 
+
+## POST Batch for Process
 
 ```
 /point-batch
