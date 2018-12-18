@@ -10,7 +10,7 @@ async function api () {
     server.register({
       plugin: require('hapi-require-https'),
       options: {}
-    })
+    });
 
     if ('production' === process.env.NODE_ENV) {
       server.ext('onRequest', function (request, next) {
