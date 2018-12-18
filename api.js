@@ -7,7 +7,7 @@ async function api () {
 
     let server = Hapi.Server();
 
-    server.register({
+    await server.register({
       plugin: require('hapi-require-https'),
       options: {}
     });
