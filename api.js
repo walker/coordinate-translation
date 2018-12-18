@@ -5,9 +5,7 @@ let proj4 = require('proj4')
 async function api () {
   try {
 
-    let server = Hapi.Server({
-      port: 80,
-    })
+    let server = Hapi.Server()
 
     server.route({
       method: 'GET',
