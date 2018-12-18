@@ -27,6 +27,7 @@
     "bcryptjs": "^2.4.3",
     "epsg": "^0.5.0",
     "hapi": "^17.8.1",
+    "hapi-require-https": "^3.0.0",
     "mongoose": "^5.4.0",
     "proj4": "^2.5.0",
     "proj4js-defs": "0.0.1",
