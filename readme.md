@@ -6,7 +6,7 @@
 /point/{from}/{to}/{srx}/{sry}
 ```
 
-The first arg is from and second is to coordinate types.
+The first argument is `from` (source) coordinate type and second is `to` (destination) coordinate type (projection).
 
 
 ## POST Batch for Process
@@ -38,7 +38,7 @@ Batch your request with a collection as an array or an indexed object:
 }
 ```
 
-This will _usually_ return the items in the same location as when you provided it, but it you want to rely on your index to match, them, use the below.
+This will _usually_ return the items in the same location as when you provided it, but if you want to rely on your index, then use the below.
 
 ```json
 {
@@ -61,4 +61,4 @@ This will _usually_ return the items in the same location as when you provided i
 }
 ```
 
-Which will return the objects with the new locations on the same index within the collection object as you provided.
+This will return the objects with the new locations on the same index within the collection object as you provided.
